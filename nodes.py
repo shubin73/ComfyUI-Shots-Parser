@@ -9,13 +9,13 @@ from .shot_parser import normalize_newlines, parse_script
 
 TEXT_EXTS = (".txt", ".md")
 MAX_BYTES = 2_000_000
-NO_FILES = "[no .txt/.md files in the input folder]"
+NO_FILES = "[no .txt/.md files yet: click Choose file...]"
 
 
 def _input_files() -> list[str]:
     """Text files under ComfyUI/input (3 folder levels deep), like core Load Image lists images.
-    Recomputed every time ComfyUI builds the node list, so press R in the UI after adding a file."""
-    base = folder_paths.get_input_directory()
+    Recomputed every time ComfyUI builds the node list, so press R in the UI after adding a file by hand."""
+    base = input_folder()
     found = []
     for root, dirs, files in os.walk(base):
         rel = os.path.relpath(root, base)
@@ -28,12 +28,14 @@ def _input_files() -> list[str]:
     return sorted(found)
 
 
-def _resolve(file: str, path_override: str) -> str:
-    override = (path_override or "").strip().strip('"').strip("'")
-    if override:
-        return os.path.abspath(os.path.expanduser(override))
-    base = os.path.realpath(folder_paths.get_input_directory())
-    full = os.path.realpath(os.path.join(base, file))
+def input_folder() -> str:
+    return os.path.realpath(folder_paths.get_input_directory())
+
+
+def _resolve(file: str) -> str:
+    """The script file is always inside the input folder (that is where 'Choose file...' puts it)."""
+    base = input_folder()
+    full = os.path.realpath(os.path.join(base, (file or "").strip()))
     if os.path.commonpath([base, full]) != base:
         raise ValueError("file must be inside the input folder")
     return full
@@ -52,22 +54,42 @@ def _read(path: str) -> str:
     raise ValueError("file is not UTF-8 (or GBK/GB18030) text")
 
 
+def save_upload(filename: str, data: bytes) -> str:
+    """Store an uploaded script in the input folder and return its name there (what the 'file' field shows).
+    Only the base name is used, only .txt/.md, never replaces a different file: a name clash gets ' (1)'."""
+    name = os.path.basename((filename or "").replace("\\", "/")).strip()
+    if not name or name.startswith(".") or not name.lower().endswith(TEXT_EXTS):
+        raise ValueError(f"Only {', '.join(TEXT_EXTS)} files are accepted.")
+    if len(data) > MAX_BYTES:
+        raise ValueError(f"file is larger than {MAX_BYTES} bytes")
+    base = input_folder()
+    os.makedirs(base, exist_ok=True)
+    stem, ext = os.path.splitext(name)
+    n = 0
+    while True:
+        candidate = name if n == 0 else f"{stem} ({n}){ext}"
+        dest = os.path.join(base, candidate)
+        if not os.path.exists(dest):
+            break
+        with open(dest, "rb") as f:
+            if f.read(MAX_BYTES + 1) == data:           # same file uploaded again: reuse it
+                return candidate
+        n += 1
+    with open(dest, "wb") as f:
+        f.write(data)
+    return candidate
+
+
 class LoadScriptFile:
-    """Load a text script from the input folder (like Load Image) or from any typed path."""
+    """Pick a text script from the input folder, or add one with the 'Choose file...' button (js/load_script_file.js)."""
 
     @classmethod
     def INPUT_TYPES(cls):
         files = _input_files() or [NO_FILES]
         return {
             "required": {
-                "file": (files, {"tooltip": "Text files in ComfyUI/input (also sub-folders). "
-                                            "Added a file? Press R in the UI to refresh this list."}),
-            },
-            "optional": {
-                "path_override": ("STRING", {"default": "", "multiline": False,
-                                             "tooltip": "Optional full path to a .txt/.md file anywhere on this "
-                                                        "computer. When filled in, it is used instead of 'file' "
-                                                        "and no list refresh is needed."}),
+                "file": (files, {"tooltip": "Text files in ComfyUI/input (also sub-folders). Not listed? "
+                                            "Click Choose file... to add one, or press R to refresh the list."}),
             },
         }
 
@@ -75,35 +97,35 @@ class LoadScriptFile:
     RETURN_NAMES = ("text", "path")
     FUNCTION = "load"
     CATEGORY = "ShotScript"
-    DESCRIPTION = "Reads a UTF-8 text file (.txt/.md) from the input folder or a typed path."
+    DESCRIPTION = "Pick a UTF-8 .txt/.md script from the list, or add one with 'Choose file...'; outputs its text and full path."
 
     @classmethod
-    def IS_CHANGED(cls, file, path_override=""):
+    def IS_CHANGED(cls, file):
         try:
-            p = _resolve(file, path_override)
+            p = _resolve(file)
             st = os.stat(p)
             return f"{p}|{st.st_mtime_ns}|{st.st_size}"
         except Exception:
             return "missing"
 
     @classmethod
-    def VALIDATE_INPUTS(cls, file, path_override=""):
+    def VALIDATE_INPUTS(cls, file):
         # having 'file' in the signature skips ComfyUI's list check, so files added after the page was
         # loaded still validate
+        if not (file or "").strip() or file == NO_FILES:
+            return "No script selected: pick one in the list or click 'Choose file...' on the Load Script File node."
         try:
-            p = _resolve(file, path_override)
+            p = _resolve(file)
         except ValueError as e:
             return str(e)
-        if file == NO_FILES and not (path_override or "").strip():
-            return "No script selected: put a .txt in ComfyUI/input and press R, or fill in path_override."
         if not os.path.isfile(p):
-            return f"File not found: {p}"
+            return f"File not found in the input folder: {file}. Click 'Choose file...' again."
         if not p.lower().endswith(TEXT_EXTS):
-            return f"Only {', '.join(TEXT_EXTS)} files are accepted: {p}"
+            return f"Only {', '.join(TEXT_EXTS)} files are accepted: {file}"
         return True
 
-    def load(self, file, path_override=""):
-        p = _resolve(file, path_override)
+    def load(self, file):
+        p = _resolve(file)
         return (normalize_newlines(_read(p)), p)
 
 

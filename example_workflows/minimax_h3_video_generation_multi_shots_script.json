@@ -439,7 +439,7 @@
           ]
         }
       ],
-      "title": "<Picture 1> = character_1",
+      "title": "character_1 (pic1)",
       "properties": {
         "ng_preview_settings": {
           "volume": 1,
@@ -451,7 +451,7 @@
       "widgets_values": [
         "character_1.jpg",
         "pic1",
-        "Character 1: Female, around 20 years old, shoulder-length slightly wavy black hair, wearing an off-white knitted cardigan or a light blue shirt, with an infectious smile and clear, determined eyes.",
+        "a woman around 20 years old with shoulder-length, slightly wavy black hair, wearing an off-white knitted cardigan or a light blue shirt, with an infectious smile and clear, determined eyes",
         "character",
         "reference",
         "high",
@@ -467,7 +467,7 @@
       "widgets_values_named": {
         "image": "character_1.jpg",
         "name": "pic1",
-        "description": "Character 1: Female, around 20 years old, shoulder-length slightly wavy black hair, wearing an off-white knitted cardigan or a light blue shirt, with an infectious smile and clear, determined eyes.",
+        "description": "a woman around 20 years old with shoulder-length, slightly wavy black hair, wearing an off-white knitted cardigan or a light blue shirt, with an infectious smile and clear, determined eyes",
         "content": "character",
         "usage": "reference",
         "preserve": "high",
@@ -514,7 +514,7 @@
           ]
         }
       ],
-      "title": "<Picture 2> = character_2",
+      "title": "character_2 (pic2)",
       "properties": {
         "ng_preview_settings": {
           "volume": 1,
@@ -526,7 +526,7 @@
       "widgets_values": [
         "character_2.jpg",
         "pic2",
-        "Character 2: Male, around 20 years old, fresh short hair, wearing a clean white T-shirt or light gray hoodie, giving off a sunny, big-boy vibe with a touch of endearing clumsiness.",
+        "a man around 20 years old with fresh short hair, wearing a clean white T-shirt or light gray hoodie, with a sunny, big-boy vibe and a touch of endearing clumsiness",
         "character",
         "reference",
         "high",
@@ -542,7 +542,7 @@
       "widgets_values_named": {
         "image": "character_2.jpg",
         "name": "pic2",
-        "description": "Character 2: Male, around 20 years old, fresh short hair, wearing a clean white T-shirt or light gray hoodie, giving off a sunny, big-boy vibe with a touch of endearing clumsiness.",
+        "description": "a man around 20 years old with fresh short hair, wearing a clean white T-shirt or light gray hoodie, with a sunny, big-boy vibe and a touch of endearing clumsiness",
         "content": "character",
         "usage": "reference",
         "preserve": "high",
@@ -589,7 +589,7 @@
           ]
         }
       ],
-      "title": "<Picture 3> = character_3",
+      "title": "character_3 (pic3)",
       "properties": {
         "ng_preview_settings": {
           "volume": 1,
@@ -601,7 +601,7 @@
       "widgets_values": [
         "character_3.jpg",
         "pic3",
-        "Character turnaround sheet: the character's face. Keeps the face, hair, build and outfit identical in every shot.",
+        "a character turnaround sheet of the same woman, showing her face, hair and build from several angles",
         "face",
         "reference",
         "high",
@@ -617,7 +617,7 @@
       "widgets_values_named": {
         "image": "character_3.jpg",
         "name": "pic3",
-        "description": "Character turnaround sheet: the character's face. Keeps the face, hair, build and outfit identical in every shot.",
+        "description": "a character turnaround sheet of the same woman, showing her face, hair and build from several angles",
         "content": "face",
         "usage": "reference",
         "preserve": "high",
@@ -1496,7 +1496,7 @@
           ]
         }
       ],
-      "title": "<Picture 4> = scene_1",
+      "title": "scene_1 (pic4)",
       "properties": {
         "ng_preview_settings": {
           "volume": 1,
@@ -1508,7 +1508,7 @@
       "widgets_values": [
         "scene_1.jpg",
         "pic4",
-        "Location reference picture: keeps the layout, light and palette of this place.",
+        "a bright, sunlit modern apartment with floor-to-ceiling windows, white sheer curtains, light wooden floors and green plants by the window, warm morning light",
         "environment",
         "reference",
         "high",
@@ -1524,7 +1524,7 @@
       "widgets_values_named": {
         "image": "scene_1.jpg",
         "name": "pic4",
-        "description": "Location reference picture: keeps the layout, light and palette of this place.",
+        "description": "a bright, sunlit modern apartment with floor-to-ceiling windows, white sheer curtains, light wooden floors and green plants by the window, warm morning light",
         "content": "environment",
         "usage": "reference",
         "preserve": "high",
@@ -1562,14 +1562,6 @@
             "name": "file"
           },
           "link": null
-        },
-        {
-          "name": "path_override",
-          "type": "STRING",
-          "widget": {
-            "name": "path_override"
-          },
-          "link": null
         }
       ],
       "outputs": [
@@ -1587,13 +1579,12 @@
           "links": []
         }
       ],
-      "title": "Load Script File (type a path in path_override to read any folder)",
+      "title": "Load Script File (click Choose file... to pick a script)",
       "properties": {
         "Node name for S&R": "LoadScriptFile"
       },
       "widgets_values": [
-        "sample_scripts.txt",
-        ""
+        "sample_scripts.txt"
       ]
     },
     {

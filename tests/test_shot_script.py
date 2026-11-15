@@ -127,38 +127,63 @@ class NodeTests(unittest.TestCase):
             f.write(data)
         return p
 
-    def test_list_refreshes_with_new_files_and_filters_extensions(self):
+    def test_dropdown_lists_text_files_and_refreshes(self):
         self.write("a.txt"); self.write("sub/b.md"); self.write("pic.png", b"x"); self.write("a/b/c/d/deep.txt")
         files = self.Load.INPUT_TYPES()["required"]["file"][0]
         self.assertIn("a.txt", files); self.assertIn("sub/b.md", files)
         self.assertNotIn("pic.png", files); self.assertNotIn("a/b/c/d/deep.txt", files)
         self.write("added_later.txt")
         self.assertIn("added_later.txt", self.Load.INPUT_TYPES()["required"]["file"][0])
+        self.assertNotIn("optional", self.Load.INPUT_TYPES())            # no path field, no free path input
+        self.assertEqual(self.Load.RETURN_NAMES, ("text", "path"))
 
     def test_validate_accepts_file_not_in_stale_list_and_rejects_bad(self):
         self.write("late.txt")
-        self.assertIs(self.Load.VALIDATE_INPUTS("late.txt", ""), True)
-        self.assertIn("not found", self.Load.VALIDATE_INPUTS("nope.txt", ""))
-        self.assertIn("inside the input folder", self.Load.VALIDATE_INPUTS("../../etc/passwd", ""))
+        self.assertIs(self.Load.VALIDATE_INPUTS("late.txt"), True)
+        self.assertIn("not found", self.Load.VALIDATE_INPUTS("nope.txt"))
+        self.assertIn("Choose file", self.Load.VALIDATE_INPUTS(""))
+        self.assertIn("Choose file", self.Load.VALIDATE_INPUTS(self.pkg.nodes.NO_FILES))
+        self.assertIn("inside the input folder", self.Load.VALIDATE_INPUTS("../../etc/passwd"))
         self.write("x.json", b"{}")
-        self.assertIn("accepted", self.Load.VALIDATE_INPUTS("x.json", ""))
+        self.assertIn("accepted", self.Load.VALIDATE_INPUTS("x.json"))
 
-    def test_load_normalizes_crlf_and_bom_and_override_path(self):
-        self.write("crlf.txt", b"\xef\xbb\xbfline1\r\nline2\r\n")
-        text, path = self.Load().load("crlf.txt", "")
+    def test_load_normalizes_crlf_and_bom_and_returns_full_path(self):
+        p = self.write("crlf.txt", b"\xef\xbb\xbfline1\r\nline2\r\n")
+        text, path = self.Load().load("crlf.txt")
         self.assertEqual(text, "line1\nline2\n")
-        outside = tempfile.NamedTemporaryFile("w", suffix=".txt", delete=False, encoding="utf-8")
-        outside.write("outside"); outside.close()
-        self.assertIs(self.Load.VALIDATE_INPUTS("ignored", outside.name), True)
-        self.assertEqual(self.Load().load("ignored", outside.name)[0], "outside")
+        self.assertEqual(path, os.path.realpath(p))
+
+    def test_upload_saves_in_input_folder_and_never_overwrites_a_different_file(self):
+        save = self.pkg.nodes.save_upload
+        self.assertEqual(save("up.txt", b"one"), "up.txt")
+        self.assertEqual(save("up.txt", b"one"), "up.txt")                # same bytes: reused
+        self.assertEqual(save("up.txt", b"two"), "up (1).txt")            # different bytes: kept apart
+        with open(os.path.join(self.tmp, "up.txt"), "rb") as f:
+            self.assertEqual(f.read(), b"one")
+        self.assertIn("up (1).txt", self.Load.INPUT_TYPES()["required"]["file"][0])   # an uploaded file is in the list
+        self.assertIs(self.Load.VALIDATE_INPUTS("up (1).txt"), True)
+
+    def test_upload_uses_base_name_and_rejects_bad_files(self):
+        save = self.pkg.nodes.save_upload
+        self.assertEqual(save("..\\..\\evil/notes.md", b"x"), "notes.md")
+        self.assertTrue(os.path.isfile(os.path.join(self.tmp, "notes.md")))
+        for bad in ("a.png", "", ".txt", "noext"):
+            with self.assertRaises(ValueError):
+                save(bad, b"x")
+        with self.assertRaises(ValueError):
+            save("big.txt", b"x" * (self.pkg.nodes.MAX_BYTES + 1))
+
+    def test_web_directory_is_js_and_script_exists(self):
+        self.assertEqual(self.pkg.WEB_DIRECTORY, "./js")
+        self.assertTrue(os.path.isfile(os.path.join(PKG, "js", "load_script_file.js")))
 
     def test_gbk_fallback_and_is_changed(self):
         self.write("cn.txt", "### SHOT 1\nPROMPT: 清晨的光".encode("gb18030"))
-        self.assertIn("清晨", self.Load().load("cn.txt", "")[0])
-        a = self.Load.IS_CHANGED("cn.txt", "")
+        self.assertIn("清晨", self.Load().load("cn.txt")[0])
+        a = self.Load.IS_CHANGED("cn.txt")
         self.write("cn.txt", b"### SHOT 1\nPROMPT: changed")
-        self.assertNotEqual(a, self.Load.IS_CHANGED("cn.txt", ""))
-        self.assertEqual(self.Load.IS_CHANGED("missing.txt", ""), "missing")
+        self.assertNotEqual(a, self.Load.IS_CHANGED("cn.txt"))
+        self.assertEqual(self.Load.IS_CHANGED("missing.txt"), "missing")
 
     def test_parser_node_outputs_and_strict_fail_fast(self):
         node = self.Parse()

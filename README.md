@@ -4,7 +4,7 @@ Two small ComfyUI nodes (standard library only, no extra packages) that replace 
 
 | Node | What it does |
 |---|---|
-| **Load Script File** | Like core *Load Image*: a drop-down of `.txt` / `.md` files in `ComfyUI/input` (3 folder levels deep). Added a file? Press **R** in the UI to refresh the list. Or type any full path into **path_override** and no list is involved. Outputs `text` (CRLF -> LF, BOM removed, UTF-8 with GBK fallback) and the resolved `path`. Re-reads the file on every run if it changed. |
+| **Load Script File** | Pick a script from the **file** drop-down (every `.txt` / `.md` in `ComfyUI/input`, 3 folder levels deep; press **R** to refresh after adding one by hand). Not there yet? Click **Choose file...**, pick a `.txt` / `.md` in your system file dialog, and it is copied into `ComfyUI/input` (a different file with the same name is kept as `name (1).txt`, never overwritten) and selected; it stays in the drop-down from then on. Outputs `text` (CRLF -> LF, BOM removed, UTF-8 with GBK fallback) and the resolved `path`. Re-reads the file on every run if it changed. |
 | **Shot Script Parser** | One pass over the script: finds every `### SHOT n` block, takes the `PROMPT:` text, builds the `start-end: prompt` lines the NG Director expects, and computes the film length from the shots it actually parsed. |
 
 Parser outputs: `shots` (STRING), `shot_count` (INT), `project_seconds` (FLOAT), `chunk_seconds` (FLOAT), `report` (STRING, send to a Preview Any).
@@ -13,8 +13,8 @@ Wire `shots` -> Director `shots`, `project_seconds` -> `project_seconds`, `chunk
 ## Install
 Pick one, then restart ComfyUI. Nothing to pip install. Nodes appear under category **ShotScript**.
 
-1. **ComfyUI-Manager** (git URL): open Manager -> **Install via Git URL** and enter `https://github.com/shubin73/ComfyUI-Shots-Parser`.
-2. **git clone**:
+1. **ComfyUI-Manager** (git URL, only if your Manager shows it; the newer Manager UI in ComfyUI Desktop may not): open Manager -> **Install via Git URL** and enter `https://github.com/shubin73/ComfyUI-Shots-Parser`.
+2. **git clone** (works everywhere, including ComfyUI Desktop; use the `custom_nodes` folder inside your Desktop install/base path):
    ```
    cd ComfyUI/custom_nodes
    git clone https://github.com/shubin73/ComfyUI-Shots-Parser
@@ -26,7 +26,7 @@ To update, run `git pull` inside the folder (or use Manager's update button), th
 To run the example workflow you also need the [ComfyUI-MiniMaxH3-Director](https://github.com/seesee75-commits/ComfyUI-MiniMaxH3-Director) pack; see [Requirements for the example workflow](#requirements-for-the-example-workflow).
 
 ## Example workflow
-`example_workflows/minimax_h3_video_generation_multi_shots_script.json` is the MiniMax H3 workflow with the 20 shot slots replaced by Load Script File -> Shot Script Parser -> NG Director. It also appears in ComfyUI's template browser. Copy `example_workflows/sample_scripts.txt` into `ComfyUI/input` and press **R** to load the sample script.
+`example_workflows/minimax_h3_video_generation_multi_shots_script.json` is the MiniMax H3 workflow with the 20 shot slots replaced by Load Script File -> Shot Script Parser -> NG Director. It also appears in ComfyUI's template browser. On the Load Script File node click **Choose file...** and pick `example_workflows/sample_scripts.txt`; after that it is in the drop-down.
 
 ### Requirements for the example workflow
 The two nodes in this pack need nothing else. The example workflow also uses nodes from elsewhere:
