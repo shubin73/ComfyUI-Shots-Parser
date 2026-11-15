@@ -1,0 +1,2079 @@
+{
+  "id": "55a1cb3a-bcc0-4eff-af49-79a7c76e2b2a",
+  "revision": 0,
+  "last_node_id": 167,
+  "last_link_id": 258,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "PrimitiveInt",
+      "pos": [
+        100,
+        130
+      ],
+      "size": [
+        500,
+        90
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "INT",
+          "type": "INT",
+          "links": [
+            251
+          ]
+        }
+      ],
+      "title": "INPUT: FIRST SHOT ID (slot 1 loads this shot; slot k loads this + k - 1)",
+      "properties": {
+        "Node name for S&R": "PrimitiveInt"
+      },
+      "widgets_values": [
+        1,
+        "fixed"
+      ],
+      "widgets_values_named": {
+        "value": 1,
+        "control_after_generate": "fixed"
+      }
+    },
+    {
+      "id": 2,
+      "type": "PrimitiveInt",
+      "pos": [
+        100,
+        340
+      ],
+      "size": [
+        440,
+        90
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "INT",
+          "type": "INT",
+          "links": [
+            252
+          ]
+        }
+      ],
+      "title": "INPUT: Shot length in seconds (same as workflow 1, max 15)",
+      "properties": {
+        "Node name for S&R": "PrimitiveInt"
+      },
+      "widgets_values": [
+        15,
+        "fixed"
+      ],
+      "widgets_values_named": {
+        "value": 15,
+        "control_after_generate": "fixed"
+      }
+    },
+    {
+      "id": 3,
+      "type": "PrimitiveStringMultiline",
+      "pos": [
+        100,
+        550
+      ],
+      "size": [
+        400,
+        200
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            225
+          ]
+        }
+      ],
+      "title": "INPUT: What the film is about (one or two sentences)",
+      "properties": {
+        "Node name for S&R": "PrimitiveStringMultiline"
+      },
+      "widgets_values": [
+        "A short music TV. Shot on 35mm Kodak Portra 400 film, bright natural sunlight, warm golden hour glow, soft lens flare, uplifting and cinematic atmosphere."
+      ],
+      "widgets_values_named": {
+        "value": "A short music TV. Shot on 35mm Kodak Portra 400 film, bright natural sunlight, warm golden hour glow, soft lens flare, uplifting and cinematic atmosphere."
+      }
+    },
+    {
+      "id": 4,
+      "type": "PrimitiveString",
+      "pos": [
+        100,
+        880
+      ],
+      "size": [
+        400,
+        70
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            231
+          ]
+        }
+      ],
+      "title": "INPUT: Soundscape of the whole film (N/A for silence)",
+      "properties": {
+        "Node name for S&R": "PrimitiveString"
+      },
+      "widgets_values": [
+        "Calm water lapping gently against stone steps"
+      ],
+      "widgets_values_named": {
+        "value": "Calm water lapping gently against stone steps"
+      }
+    },
+    {
+      "id": 5,
+      "type": "PrimitiveString",
+      "pos": [
+        100,
+        1070
+      ],
+      "size": [
+        410,
+        90
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            232
+          ]
+        }
+      ],
+      "title": "INPUT: Music of the whole film (N/A for none)",
+      "properties": {
+        "Node name for S&R": "PrimitiveString"
+      },
+      "widgets_values": [
+        "slow, meditative acoustic melody"
+      ],
+      "widgets_values_named": {
+        "value": "slow, meditative acoustic melody"
+      }
+    },
+    {
+      "id": 6,
+      "type": "PrimitiveInt",
+      "pos": [
+        100,
+        1260
+      ],
+      "size": [
+        270,
+        90
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "INT",
+          "type": "INT",
+          "links": [
+            241
+          ]
+        }
+      ],
+      "title": "INPUT: Seed",
+      "properties": {
+        "Node name for S&R": "PrimitiveInt"
+      },
+      "widgets_values": [
+        -301576413109080,
+        "randomize"
+      ],
+      "widgets_values_named": {
+        "value": -301576413109080,
+        "control_after_generate": "randomize"
+      }
+    },
+    {
+      "id": 7,
+      "type": "PrimitiveBoolean",
+      "pos": [
+        100,
+        1470
+      ],
+      "size": [
+        430,
+        60
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "BOOLEAN",
+          "type": "BOOLEAN",
+          "links": [
+            221,
+            224
+          ]
+        }
+      ],
+      "title": "INPUT: Turbo LoRA (faster, softer; recommended on 12GB)",
+      "properties": {
+        "Node name for S&R": "PrimitiveBoolean"
+      },
+      "widgets_values": [
+        true
+      ],
+      "widgets_values_named": {
+        "value": true
+      }
+    },
+    {
+      "id": 8,
+      "type": "ResolutionSelector",
+      "pos": [
+        100,
+        1660
+      ],
+      "size": [
+        270,
+        150
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "showAdvanced": true,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "width",
+          "type": "INT",
+          "links": [
+            229
+          ]
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "links": [
+            230
+          ]
+        }
+      ],
+      "title": "INPUT: Resolution",
+      "properties": {
+        "Node name for S&R": "ResolutionSelector"
+      },
+      "widgets_values": [
+        "16:9 (Widescreen)",
+        0.5,
+        8
+      ],
+      "widgets_values_named": {
+        "aspect_ratio": "16:9 (Widescreen)",
+        "megapixels": 0.5,
+        "multiple": 8
+      }
+    },
+    {
+      "id": 10,
+      "type": "PreviewAny",
+      "pos": [
+        860,
+        20260
+      ],
+      "size": [
+        210,
+        130
+      ],
+      "flags": {},
+      "order": 80,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "source",
+          "type": "*",
+          "link": 249
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "title": "PREVIEW: script text",
+      "properties": {
+        "Node name for S&R": "PreviewAny"
+      },
+      "widgets_values": [],
+      "widgets_values_named": {}
+    },
+    {
+      "id": 137,
+      "type": "PreviewAny",
+      "pos": [
+        4860,
+        130
+      ],
+      "size": [
+        410,
+        180
+      ],
+      "flags": {},
+      "order": 157,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "source",
+          "type": "*",
+          "link": 253
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "title": "PREVIEW: shots text sent to the Director",
+      "properties": {
+        "Node name for S&R": "PreviewAny"
+      },
+      "widgets_values": [],
+      "widgets_values_named": {}
+    },
+    {
+      "id": 142,
+      "type": "PreviewAny",
+      "pos": [
+        2360,
+        7970
+      ],
+      "size": [
+        210,
+        130
+      ],
+      "flags": {},
+      "order": 131,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "source",
+          "type": "*",
+          "link": 254
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "title": "PREVIEW: shots found",
+      "properties": {
+        "Node name for S&R": "PreviewAny"
+      },
+      "widgets_values": [],
+      "widgets_values_named": {}
+    },
+    {
+      "id": 145,
+      "type": "NGContextImage",
+      "pos": [
+        90,
+        2150
+      ],
+      "size": [
+        660,
+        777
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "ai_provider",
+          "shape": 7,
+          "type": "NG_AI_PROVIDER",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "context",
+          "type": "NG_CONTEXT",
+          "links": [
+            233
+          ]
+        }
+      ],
+      "title": "<Picture 1> = character_1",
+      "properties": {
+        "ng_preview_settings": {
+          "volume": 1,
+          "fade_in": 0,
+          "fade_out": 0
+        },
+        "Node name for S&R": "NGContextImage"
+      },
+      "widgets_values": [
+        "character_1.jpg",
+        "pic1",
+        "Character 1: Female, around 20 years old, shoulder-length slightly wavy black hair, wearing an off-white knitted cardigan or a light blue shirt, with an infectious smile and clear, determined eyes.",
+        "character",
+        "reference",
+        "high",
+        "ctx_4ad17e7fa4e01b668a2f6f36f5fffe7a",
+        "#b1cbe3",
+        "",
+        "",
+        "",
+        "",
+        "image",
+        ""
+      ],
+      "widgets_values_named": {
+        "image": "character_1.jpg",
+        "name": "pic1",
+        "description": "Character 1: Female, around 20 years old, shoulder-length slightly wavy black hair, wearing an off-white knitted cardigan or a light blue shirt, with an infectious smile and clear, determined eyes.",
+        "content": "character",
+        "usage": "reference",
+        "preserve": "high",
+        "context_id": "ctx_4ad17e7fa4e01b668a2f6f36f5fffe7a",
+        "color": "#b1cbe3",
+        "content_roles": "",
+        "usage_roles": "",
+        "context_options": "",
+        "subject_ids": "",
+        "upload": "image",
+        "h3c_card": ""
+      },
+      "color": "#192842",
+      "bgcolor": "#101a2c"
+    },
+    {
+      "id": 146,
+      "type": "NGContextImage",
+      "pos": [
+        100,
+        3060
+      ],
+      "size": [
+        660,
+        777
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "ai_provider",
+          "shape": 7,
+          "type": "NG_AI_PROVIDER",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "context",
+          "type": "NG_CONTEXT",
+          "links": [
+            234
+          ]
+        }
+      ],
+      "title": "<Picture 2> = character_2",
+      "properties": {
+        "ng_preview_settings": {
+          "volume": 1,
+          "fade_in": 0,
+          "fade_out": 0
+        },
+        "Node name for S&R": "NGContextImage"
+      },
+      "widgets_values": [
+        "character_2.jpg",
+        "pic2",
+        "Character 2: Male, around 20 years old, fresh short hair, wearing a clean white T-shirt or light gray hoodie, giving off a sunny, big-boy vibe with a touch of endearing clumsiness.",
+        "character",
+        "reference",
+        "high",
+        "ctx_86baad4cd8998c64d55879c60a0b8659",
+        "#8fdcdd",
+        "[\"character\"]",
+        "",
+        "",
+        "",
+        "image",
+        ""
+      ],
+      "widgets_values_named": {
+        "image": "character_2.jpg",
+        "name": "pic2",
+        "description": "Character 2: Male, around 20 years old, fresh short hair, wearing a clean white T-shirt or light gray hoodie, giving off a sunny, big-boy vibe with a touch of endearing clumsiness.",
+        "content": "character",
+        "usage": "reference",
+        "preserve": "high",
+        "context_id": "ctx_86baad4cd8998c64d55879c60a0b8659",
+        "color": "#8fdcdd",
+        "content_roles": "[\"character\"]",
+        "usage_roles": "",
+        "context_options": "",
+        "subject_ids": "",
+        "upload": "image",
+        "h3c_card": ""
+      },
+      "color": "#192842",
+      "bgcolor": "#101a2c"
+    },
+    {
+      "id": 147,
+      "type": "NGContextImage",
+      "pos": [
+        100,
+        3970
+      ],
+      "size": [
+        660,
+        777
+      ],
+      "flags": {},
+      "order": 11,
+      "mode": 4,
+      "inputs": [
+        {
+          "name": "ai_provider",
+          "shape": 7,
+          "type": "NG_AI_PROVIDER",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "context",
+          "type": "NG_CONTEXT",
+          "links": [
+            235
+          ]
+        }
+      ],
+      "title": "<Picture 3> = character_3",
+      "properties": {
+        "ng_preview_settings": {
+          "volume": 1,
+          "fade_in": 0,
+          "fade_out": 0
+        },
+        "Node name for S&R": "NGContextImage"
+      },
+      "widgets_values": [
+        "character_3.jpg",
+        "pic3",
+        "Character turnaround sheet: the character's face. Keeps the face, hair, build and outfit identical in every shot.",
+        "face",
+        "reference",
+        "high",
+        "ctx_070587b4a191ae5f8f6bfa6caa45b8f9",
+        "#b1cbe3",
+        "[]",
+        "",
+        "",
+        "",
+        "image",
+        ""
+      ],
+      "widgets_values_named": {
+        "image": "character_3.jpg",
+        "name": "pic3",
+        "description": "Character turnaround sheet: the character's face. Keeps the face, hair, build and outfit identical in every shot.",
+        "content": "face",
+        "usage": "reference",
+        "preserve": "high",
+        "context_id": "ctx_070587b4a191ae5f8f6bfa6caa45b8f9",
+        "color": "#b1cbe3",
+        "content_roles": "[]",
+        "usage_roles": "",
+        "context_options": "",
+        "subject_ids": "",
+        "upload": "image",
+        "h3c_card": ""
+      },
+      "color": "#192842",
+      "bgcolor": "#101a2c"
+    },
+    {
+      "id": 148,
+      "type": "UNETLoader",
+      "pos": [
+        100,
+        4870
+      ],
+      "size": [
+        270,
+        90
+      ],
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            218,
+            219
+          ]
+        }
+      ],
+      "title": "H3 Ref2VA model",
+      "properties": {
+        "Node name for S&R": "UNETLoader"
+      },
+      "widgets_values": [
+        "minimax_h3_ref2va_pruned_int8_convrot.safetensors",
+        "default"
+      ],
+      "widgets_values_named": {
+        "unet_name": "minimax_h3_ref2va_pruned_int8_convrot.safetensors",
+        "weight_dtype": "default"
+      }
+    },
+    {
+      "id": 149,
+      "type": "CLIPLoader",
+      "pos": [
+        100,
+        5090
+      ],
+      "size": [
+        270,
+        110
+      ],
+      "flags": {},
+      "order": 13,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            237
+          ]
+        }
+      ],
+      "title": "H3 text encoder (type=minimax)",
+      "properties": {
+        "Node name for S&R": "CLIPLoader"
+      },
+      "widgets_values": [
+        "qwen3-vl_32b_minimax_h3_ultra_uncensored_heretic_int8_convrot.safetensors",
+        "minimax",
+        "default"
+      ],
+      "widgets_values_named": {
+        "clip_name": "qwen3-vl_32b_minimax_h3_ultra_uncensored_heretic_int8_convrot.safetensors",
+        "type": "minimax",
+        "device": "default"
+      }
+    },
+    {
+      "id": 150,
+      "type": "VAELoader",
+      "pos": [
+        100,
+        5320
+      ],
+      "size": [
+        270,
+        60
+      ],
+      "flags": {},
+      "order": 14,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            238
+          ]
+        }
+      ],
+      "title": "H3 video VAE",
+      "properties": {
+        "Node name for S&R": "VAELoader"
+      },
+      "widgets_values": [
+        "minimax_h3_video_vae_fp16.safetensors"
+      ],
+      "widgets_values_named": {
+        "vae_name": "minimax_h3_video_vae_fp16.safetensors"
+      }
+    },
+    {
+      "id": 151,
+      "type": "VAELoader",
+      "pos": [
+        100,
+        5510
+      ],
+      "size": [
+        270,
+        60
+      ],
+      "flags": {},
+      "order": 15,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            239
+          ]
+        }
+      ],
+      "title": "H3 audio VAE",
+      "properties": {
+        "Node name for S&R": "VAELoader"
+      },
+      "widgets_values": [
+        "minimax_h3_audio_vae_fp32.safetensors"
+      ],
+      "widgets_values_named": {
+        "vae_name": "minimax_h3_audio_vae_fp32.safetensors"
+      }
+    },
+    {
+      "id": 152,
+      "type": "LoraLoaderModelOnly",
+      "pos": [
+        860,
+        21500
+      ],
+      "size": [
+        640,
+        100
+      ],
+      "flags": {},
+      "order": 84,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 218
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            220
+          ]
+        }
+      ],
+      "title": "Turbo LoRA",
+      "properties": {
+        "Node name for S&R": "LoraLoaderModelOnly"
+      },
+      "widgets_values": [
+        "minimax\\minimax_h3_ref2v_turbo_4step_v0.1_comfyui_bf16.safetensors",
+        1
+      ],
+      "widgets_values_named": {
+        "lora_name": "minimax\\minimax_h3_ref2v_turbo_4step_v0.1_comfyui_bf16.safetensors",
+        "strength_model": 1
+      }
+    },
+    {
+      "id": 153,
+      "type": "PrimitiveInt",
+      "pos": [
+        100,
+        5700
+      ],
+      "size": [
+        270,
+        90
+      ],
+      "flags": {},
+      "order": 16,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "INT",
+          "type": "INT",
+          "links": [
+            222
+          ]
+        }
+      ],
+      "title": "Steps (full)",
+      "properties": {
+        "Node name for S&R": "PrimitiveInt"
+      },
+      "widgets_values": [
+        2,
+        "fixed"
+      ],
+      "widgets_values_named": {
+        "value": 2,
+        "control_after_generate": "fixed"
+      }
+    },
+    {
+      "id": 154,
+      "type": "PrimitiveInt",
+      "pos": [
+        100,
+        5910
+      ],
+      "size": [
+        490,
+        90
+      ],
+      "flags": {},
+      "order": 17,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "INT",
+          "type": "INT",
+          "links": [
+            223
+          ]
+        }
+      ],
+      "title": "Steps (turbo; this pack measured 6 for this LoRA, 4 left a white veil)",
+      "properties": {
+        "Node name for S&R": "PrimitiveInt"
+      },
+      "widgets_values": [
+        25,
+        "fixed"
+      ],
+      "widgets_values_named": {
+        "value": 25,
+        "control_after_generate": "fixed"
+      }
+    },
+    {
+      "id": 155,
+      "type": "ComfySwitchNode",
+      "pos": [
+        1360,
+        7390
+      ],
+      "size": [
+        270,
+        80
+      ],
+      "flags": {},
+      "order": 108,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "on_false",
+          "shape": 7,
+          "type": "MODEL",
+          "link": 219
+        },
+        {
+          "name": "on_true",
+          "shape": 7,
+          "type": "MODEL",
+          "link": 220
+        },
+        {
+          "name": "switch",
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "switch"
+          },
+          "link": 221
+        }
+      ],
+      "outputs": [
+        {
+          "name": "output",
+          "type": "MODEL",
+          "links": [
+            240
+          ]
+        }
+      ],
+      "title": "Switch model",
+      "properties": {
+        "Node name for S&R": "ComfySwitchNode"
+      },
+      "widgets_values": [
+        false
+      ],
+      "widgets_values_named": {
+        "switch": false
+      }
+    },
+    {
+      "id": 156,
+      "type": "ComfySwitchNode",
+      "pos": [
+        860,
+        21710
+      ],
+      "size": [
+        270,
+        80
+      ],
+      "flags": {},
+      "order": 85,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "on_false",
+          "shape": 7,
+          "type": "INT",
+          "link": 222
+        },
+        {
+          "name": "on_true",
+          "shape": 7,
+          "type": "INT",
+          "link": 223
+        },
+        {
+          "name": "switch",
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "switch"
+          },
+          "link": 224
+        }
+      ],
+      "outputs": [
+        {
+          "name": "output",
+          "type": "INT",
+          "links": [
+            242
+          ]
+        }
+      ],
+      "title": "Switch steps",
+      "properties": {
+        "Node name for S&R": "ComfySwitchNode"
+      },
+      "widgets_values": [
+        false
+      ],
+      "widgets_values_named": {
+        "switch": false
+      }
+    },
+    {
+      "id": 157,
+      "type": "NGDirector",
+      "pos": [
+        4860,
+        380
+      ],
+      "size": [
+        400,
+        810
+      ],
+      "flags": {},
+      "order": 158,
+      "mode": 0,
+      "showAdvanced": true,
+      "inputs": [
+        {
+          "name": "prepend_text",
+          "shape": 7,
+          "type": "STRING",
+          "link": null
+        },
+        {
+          "name": "contexts.context_0",
+          "shape": 7,
+          "type": "NG_CONTEXT",
+          "link": 233
+        },
+        {
+          "name": "contexts.context_1",
+          "shape": 7,
+          "type": "NG_CONTEXT",
+          "link": 234
+        },
+        {
+          "name": "contexts.context_2",
+          "shape": 7,
+          "type": "NG_CONTEXT",
+          "link": 235
+        },
+        {
+          "name": "contexts.context_3",
+          "shape": 7,
+          "type": "NG_CONTEXT",
+          "link": 247
+        },
+        {
+          "name": "contexts.context_4",
+          "shape": 7,
+          "type": "NG_CONTEXT",
+          "link": null
+        },
+        {
+          "name": "contexts.context_5",
+          "shape": 7,
+          "type": "NG_CONTEXT",
+          "link": null
+        },
+        {
+          "name": "contexts.context_6",
+          "shape": 7,
+          "type": "NG_CONTEXT",
+          "link": null
+        },
+        {
+          "name": "contexts.context_7",
+          "shape": 7,
+          "type": "NG_CONTEXT",
+          "link": null
+        },
+        {
+          "name": "idea",
+          "type": "STRING",
+          "widget": {
+            "name": "idea"
+          },
+          "link": 225
+        },
+        {
+          "name": "shots",
+          "type": "STRING",
+          "widget": {
+            "name": "shots"
+          },
+          "link": 256
+        },
+        {
+          "name": "project_seconds",
+          "type": "FLOAT",
+          "widget": {
+            "name": "project_seconds"
+          },
+          "link": 257
+        },
+        {
+          "name": "chunk_seconds",
+          "type": "FLOAT",
+          "widget": {
+            "name": "chunk_seconds"
+          },
+          "link": 258
+        },
+        {
+          "name": "width",
+          "type": "INT",
+          "widget": {
+            "name": "width"
+          },
+          "link": 229
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "widget": {
+            "name": "height"
+          },
+          "link": 230
+        },
+        {
+          "name": "soundscape",
+          "type": "STRING",
+          "widget": {
+            "name": "soundscape"
+          },
+          "link": 231
+        },
+        {
+          "name": "music",
+          "type": "STRING",
+          "widget": {
+            "name": "music"
+          },
+          "link": 232
+        }
+      ],
+      "outputs": [
+        {
+          "name": "chunks",
+          "shape": 6,
+          "type": "NG_CHUNK",
+          "links": [
+            236
+          ]
+        },
+        {
+          "name": "warnings",
+          "type": "STRING",
+          "links": [
+            244
+          ]
+        },
+        {
+          "name": "plan",
+          "type": "STRING",
+          "links": [
+            243
+          ]
+        }
+      ],
+      "title": "NG Chunk Planner (plans the render parts)",
+      "properties": {
+        "Node name for S&R": "NGDirector"
+      },
+      "widgets_values": [
+        "",
+        "",
+        10,
+        0,
+        768,
+        1152,
+        "ref2va",
+        "video_audio",
+        "22",
+        "ambience that fits the scene",
+        "",
+        ""
+      ],
+      "widgets_values_named": {
+        "idea": "",
+        "shots": "",
+        "project_seconds": 10,
+        "chunk_seconds": 0,
+        "width": 768,
+        "height": 1152,
+        "mode": "ref2va",
+        "continuity": "video_audio",
+        "pin_frames": "22",
+        "soundscape": "ambience that fits the scene",
+        "music": "",
+        "ng_plan": ""
+      }
+    },
+    {
+      "id": 158,
+      "type": "NGRenderSequence",
+      "pos": [
+        5360,
+        130
+      ],
+      "size": [
+        370,
+        310
+      ],
+      "flags": {},
+      "order": 159,
+      "mode": 0,
+      "showAdvanced": true,
+      "inputs": [
+        {
+          "name": "chunks",
+          "type": "NG_CHUNK",
+          "link": 236
+        },
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 237
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 238
+        },
+        {
+          "name": "audio_vae",
+          "type": "VAE",
+          "link": 239
+        },
+        {
+          "name": "model_fl2va",
+          "shape": 7,
+          "type": "MODEL",
+          "link": null
+        },
+        {
+          "name": "model_ref2va",
+          "shape": 7,
+          "type": "MODEL",
+          "link": 240
+        },
+        {
+          "name": "seed",
+          "type": "INT",
+          "widget": {
+            "name": "seed"
+          },
+          "link": 241
+        },
+        {
+          "name": "steps",
+          "type": "INT",
+          "widget": {
+            "name": "steps"
+          },
+          "link": 242
+        }
+      ],
+      "outputs": [
+        {
+          "name": "video",
+          "type": "VIDEO",
+          "links": [
+            246
+          ]
+        },
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "links": null
+        },
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "links": null
+        },
+        {
+          "name": "render_warnings",
+          "type": "STRING",
+          "links": [
+            245
+          ]
+        }
+      ],
+      "title": "NG Chunk Sequence (renders and joins the parts)",
+      "properties": {
+        "Node name for S&R": "NGRenderSequence"
+      },
+      "widgets_values": [
+        0,
+        "randomize",
+        20,
+        "res_multistep",
+        "simple",
+        5,
+        3
+      ],
+      "widgets_values_named": {
+        "seed": 0,
+        "control_after_generate": "randomize",
+        "steps": 20,
+        "sampler_name": "res_multistep",
+        "scheduler": "simple",
+        "shift_video": 5,
+        "shift_audio": 3
+      }
+    },
+    {
+      "id": 159,
+      "type": "PreviewAny",
+      "pos": [
+        5360,
+        810
+      ],
+      "size": [
+        370,
+        200
+      ],
+      "flags": {},
+      "order": 161,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "source",
+          "type": "*",
+          "link": 243
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "title": "PREVIEW: plan",
+      "properties": {
+        "Node name for S&R": "PreviewAny"
+      },
+      "widgets_values": [],
+      "widgets_values_named": {}
+    },
+    {
+      "id": 160,
+      "type": "PreviewAny",
+      "pos": [
+        5360,
+        560
+      ],
+      "size": [
+        370,
+        200
+      ],
+      "flags": {},
+      "order": 160,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "source",
+          "type": "*",
+          "link": 244
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "title": "PREVIEW: plan warnings",
+      "properties": {
+        "Node name for S&R": "PreviewAny"
+      },
+      "widgets_values": [],
+      "widgets_values_named": {}
+    },
+    {
+      "id": 161,
+      "type": "PreviewAny",
+      "pos": [
+        6000,
+        630
+      ],
+      "size": [
+        400,
+        270
+      ],
+      "flags": {},
+      "order": 163,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "source",
+          "type": "*",
+          "link": 245
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "title": "PREVIEW: render warnings",
+      "properties": {
+        "Node name for S&R": "PreviewAny"
+      },
+      "widgets_values": [],
+      "widgets_values_named": {}
+    },
+    {
+      "id": 162,
+      "type": "SaveVideo",
+      "pos": [
+        6000,
+        130
+      ],
+      "size": [
+        400,
+        360
+      ],
+      "flags": {},
+      "order": 162,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "video",
+          "type": "VIDEO",
+          "link": 246
+        }
+      ],
+      "outputs": [
+        {
+          "name": "video",
+          "type": "VIDEO",
+          "links": null
+        }
+      ],
+      "title": "Save film",
+      "properties": {
+        "Node name for S&R": "SaveVideo"
+      },
+      "widgets_values": [
+        "video/minimax_h3_shot_script",
+        "auto",
+        "auto",
+        "auto"
+      ],
+      "widgets_values_named": {
+        "filename_prefix": "video/minimax_h3_shot_script",
+        "format": "auto",
+        "format.codec": "auto",
+        "codec": "auto"
+      }
+    },
+    {
+      "id": 163,
+      "type": "NGContextImage",
+      "pos": [
+        4170,
+        2990
+      ],
+      "size": [
+        660,
+        777
+      ],
+      "flags": {},
+      "order": 18,
+      "mode": 4,
+      "inputs": [
+        {
+          "name": "ai_provider",
+          "shape": 7,
+          "type": "NG_AI_PROVIDER",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "context",
+          "type": "NG_CONTEXT",
+          "links": [
+            247
+          ]
+        }
+      ],
+      "title": "<Picture 4> = scene_1",
+      "properties": {
+        "ng_preview_settings": {
+          "volume": 1,
+          "fade_in": 0,
+          "fade_out": 0
+        },
+        "Node name for S&R": "NGContextImage"
+      },
+      "widgets_values": [
+        "scene_1.jpg",
+        "pic4",
+        "Location reference picture: keeps the layout, light and palette of this place.",
+        "environment",
+        "reference",
+        "high",
+        "ctx_94ffbd0d0362d4011e5b8c7637e43a6b",
+        "#739dbf",
+        "[\"environment\"]",
+        "",
+        "",
+        "",
+        "image",
+        ""
+      ],
+      "widgets_values_named": {
+        "image": "scene_1.jpg",
+        "name": "pic4",
+        "description": "Location reference picture: keeps the layout, light and palette of this place.",
+        "content": "environment",
+        "usage": "reference",
+        "preserve": "high",
+        "context_id": "ctx_94ffbd0d0362d4011e5b8c7637e43a6b",
+        "color": "#739dbf",
+        "content_roles": "[\"environment\"]",
+        "usage_roles": "",
+        "context_options": "",
+        "subject_ids": "",
+        "upload": "image",
+        "h3c_card": ""
+      },
+      "color": "#192842",
+      "bgcolor": "#101a2c"
+    },
+    {
+      "id": 165,
+      "type": "LoadScriptFile",
+      "pos": [
+        100,
+        1940
+      ],
+      "size": [
+        360,
+        110
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "file",
+          "type": "COMBO",
+          "widget": {
+            "name": "file"
+          },
+          "link": null
+        },
+        {
+          "name": "path_override",
+          "type": "STRING",
+          "widget": {
+            "name": "path_override"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "links": [
+            249,
+            250
+          ]
+        },
+        {
+          "name": "path",
+          "type": "STRING",
+          "links": []
+        }
+      ],
+      "title": "Load Script File (type a path in path_override to read any folder)",
+      "properties": {
+        "Node name for S&R": "LoadScriptFile"
+      },
+      "widgets_values": [
+        "sample_scripts.txt",
+        ""
+      ]
+    },
+    {
+      "id": 166,
+      "type": "ShotScriptParser",
+      "pos": [
+        520,
+        1940
+      ],
+      "size": [
+        400,
+        260
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "script",
+          "type": "STRING",
+          "widget": {
+            "name": "script"
+          },
+          "link": 250
+        },
+        {
+          "name": "first_shot_id",
+          "type": "INT",
+          "widget": {
+            "name": "first_shot_id"
+          },
+          "link": 251
+        },
+        {
+          "name": "shot_seconds",
+          "type": "INT",
+          "widget": {
+            "name": "shot_seconds"
+          },
+          "link": 252
+        },
+        {
+          "name": "max_shot_seconds",
+          "type": "INT",
+          "widget": {
+            "name": "max_shot_seconds"
+          },
+          "link": null
+        },
+        {
+          "name": "max_shots",
+          "type": "INT",
+          "widget": {
+            "name": "max_shots"
+          },
+          "link": null
+        },
+        {
+          "name": "picture_alias",
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "picture_alias"
+          },
+          "link": null
+        },
+        {
+          "name": "strict",
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "strict"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "shots",
+          "type": "STRING",
+          "links": [
+            253,
+            256
+          ]
+        },
+        {
+          "name": "shot_count",
+          "type": "INT",
+          "links": [
+            254
+          ]
+        },
+        {
+          "name": "project_seconds",
+          "type": "FLOAT",
+          "links": [
+            257
+          ]
+        },
+        {
+          "name": "chunk_seconds",
+          "type": "FLOAT",
+          "links": [
+            258
+          ]
+        },
+        {
+          "name": "report",
+          "type": "STRING",
+          "links": [
+            255
+          ]
+        }
+      ],
+      "title": "Shot Script Parser (replaces the 20 shot slots)",
+      "properties": {
+        "Node name for S&R": "ShotScriptParser"
+      },
+      "widgets_values": [
+        "",
+        1,
+        15,
+        15,
+        0,
+        true,
+        true
+      ]
+    },
+    {
+      "id": 167,
+      "type": "PreviewAny",
+      "pos": [
+        960,
+        2240
+      ],
+      "size": [
+        410,
+        180
+      ],
+      "flags": {},
+      "order": 157,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "source",
+          "type": "*",
+          "link": 255
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": []
+        }
+      ],
+      "title": "PREVIEW: parser report (shots, length, warnings)",
+      "properties": {
+        "Node name for S&R": "PreviewAny"
+      },
+      "widgets_values": [],
+      "widgets_values_named": {}
+    }
+  ],
+  "links": [
+    [
+      218,
+      148,
+      0,
+      152,
+      0,
+      "MODEL"
+    ],
+    [
+      219,
+      148,
+      0,
+      155,
+      0,
+      "MODEL"
+    ],
+    [
+      220,
+      152,
+      0,
+      155,
+      1,
+      "MODEL"
+    ],
+    [
+      221,
+      7,
+      0,
+      155,
+      2,
+      "BOOLEAN"
+    ],
+    [
+      222,
+      153,
+      0,
+      156,
+      0,
+      "INT"
+    ],
+    [
+      223,
+      154,
+      0,
+      156,
+      1,
+      "INT"
+    ],
+    [
+      224,
+      7,
+      0,
+      156,
+      2,
+      "BOOLEAN"
+    ],
+    [
+      236,
+      157,
+      0,
+      158,
+      0,
+      "NG_CHUNK"
+    ],
+    [
+      237,
+      149,
+      0,
+      158,
+      1,
+      "CLIP"
+    ],
+    [
+      238,
+      150,
+      0,
+      158,
+      2,
+      "VAE"
+    ],
+    [
+      239,
+      151,
+      0,
+      158,
+      3,
+      "VAE"
+    ],
+    [
+      240,
+      155,
+      0,
+      158,
+      5,
+      "MODEL"
+    ],
+    [
+      241,
+      6,
+      0,
+      158,
+      6,
+      "INT"
+    ],
+    [
+      242,
+      156,
+      0,
+      158,
+      7,
+      "INT"
+    ],
+    [
+      243,
+      157,
+      2,
+      159,
+      0,
+      "STRING"
+    ],
+    [
+      244,
+      157,
+      1,
+      160,
+      0,
+      "STRING"
+    ],
+    [
+      245,
+      158,
+      3,
+      161,
+      0,
+      "STRING"
+    ],
+    [
+      246,
+      158,
+      0,
+      162,
+      0,
+      "VIDEO"
+    ],
+    [
+      233,
+      145,
+      0,
+      157,
+      1,
+      "NG_CONTEXT"
+    ],
+    [
+      234,
+      146,
+      0,
+      157,
+      2,
+      "NG_CONTEXT"
+    ],
+    [
+      235,
+      147,
+      0,
+      157,
+      3,
+      "NG_CONTEXT"
+    ],
+    [
+      247,
+      163,
+      0,
+      157,
+      4,
+      "NG_CONTEXT"
+    ],
+    [
+      225,
+      3,
+      0,
+      157,
+      9,
+      "STRING"
+    ],
+    [
+      229,
+      8,
+      0,
+      157,
+      13,
+      "INT"
+    ],
+    [
+      230,
+      8,
+      1,
+      157,
+      14,
+      "INT"
+    ],
+    [
+      231,
+      4,
+      0,
+      157,
+      15,
+      "STRING"
+    ],
+    [
+      232,
+      5,
+      0,
+      157,
+      16,
+      "STRING"
+    ],
+    [
+      249,
+      165,
+      0,
+      10,
+      0,
+      "STRING"
+    ],
+    [
+      250,
+      165,
+      0,
+      166,
+      0,
+      "STRING"
+    ],
+    [
+      251,
+      1,
+      0,
+      166,
+      1,
+      "INT"
+    ],
+    [
+      252,
+      2,
+      0,
+      166,
+      2,
+      "INT"
+    ],
+    [
+      253,
+      166,
+      0,
+      137,
+      0,
+      "STRING"
+    ],
+    [
+      254,
+      166,
+      1,
+      142,
+      0,
+      "INT"
+    ],
+    [
+      255,
+      166,
+      4,
+      167,
+      0,
+      "STRING"
+    ],
+    [
+      256,
+      166,
+      0,
+      157,
+      10,
+      "STRING"
+    ],
+    [
+      257,
+      166,
+      2,
+      157,
+      11,
+      "FLOAT"
+    ],
+    [
+      258,
+      166,
+      3,
+      157,
+      12,
+      "FLOAT"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 1.0834705943388439,
+      "offset": [
+        -3972.14229978835,
+        -46.2627881971775
+      ]
+    },
+    "frontendVersion": "1.58.5",
+    "VHS_latentpreview": false,
+    "VHS_latentpreviewrate": 0,
+    "VHS_MetadataImage": true,
+    "VHS_KeepIntermediate": true
+  },
+  "extensions": {
+    "seed_widgets": {
+      "25": 15
+    }
+  },
+  "version": 0.4
+}

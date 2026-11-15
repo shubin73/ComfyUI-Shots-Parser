@@ -1,0 +1,7 @@
+### SHOT 1: Urban Morning Light (0:00 - 0:08)
+CONTINUOUS: NO
+PROMPT: [Push in, slow] Inside the bright, sunlit apartment shown in <Picture 4>, in the morning, golden sunbeams stream through floor-to-ceiling windows as white sheer curtains sway gently in the breeze. <Picture 1> stands by the window tending to green indoor plants, turning slightly with a peaceful smile. Shot on 35mm Kodak Portra 400 film, bright natural sunlight, warm golden hour glow, soft lens flare, uplifting and cinematic atmosphere.
+
+### SHOT 2: The Time Capsule (0:08 - 0:16)
+CONTINUOUS: YES
+PROMPT: [Tilt down, macro] Warm morning sunlight dances across a wooden desk as the hands of <Picture 1> gently lift the lid of an old wooden memory box, revealing a bundle of letters tied with twine and a vintage black vinyl record inside. Shot on 35mm Kodak Portra 400 film, bright natural sunlight, warm golden hour glow, soft lens flare, uplifting and cinematic atmosphere.
